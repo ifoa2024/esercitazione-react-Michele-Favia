@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url('public\castello.jpg'); /* Percorso assoluto dalla cartella 'public' */
+  background-size: cover; /* Adatta l'immagine per coprire l'intera pagina */
+  background-position: center; /* Centra l'immagine */
+  background-repeat: no-repeat; /* Non ripetere l'immagine */
+  margin: 0; /* Rimuove i margini */
+  font-family: Arial, sans-serif; /* Cambia il font */
+}
