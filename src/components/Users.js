@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../AuthContext';  // Importa il contesto
 
 const Users = () => {
+  const { user } = useContext(AuthContext); // Ottieni l'utente dal contesto
+
   const [users, setUsers] = useState([]); // Stato per memorizzare gli utenti
   const [loading, setLoading] = useState(true); // Stato per il caricamento
   const [error, setError] = useState(null); // Stato per l'errore
 
-  // Effettua la chiamata API al caricamento del componente
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -14,18 +16,21 @@ const Users = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUsers(data); // Imposta i dati degli utenti nello stato
-        setLoading(false); // Modifica lo stato di caricamento
+        setUsers(data);
+        setLoading(false);
       } catch (error) {
-        setError(error); // Gestisce l'errore
-        setLoading(false); // Modifica lo stato di caricamento
+        setError(error);
+        setLoading(false);
       }
     };
 
     fetchUsers();
-  }, []); // La chiamata API viene effettuata solo una volta quando il componente viene montato
+  }, []);
 
-  // Gestisce lo stato di caricamento e gli errori
+  if (!user) {
+    return <div className="text-center">Per visualizzare gli utenti, devi effettuare il login.</div>;
+  }
+
   if (loading) {
     return <div className="text-center">Caricamento in corso...</div>;
   }
