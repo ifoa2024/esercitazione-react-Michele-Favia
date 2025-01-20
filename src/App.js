@@ -1,32 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import home  from './components/home';
-import about from './components/about';
-import contact from './components/contact';
+import React from 'react'; // Importa React una sola volta
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/home';
+import About from './components/about';
+import Contact from './components/contact';
+import Login from './components/login';
+import Profile from './components/profile';
+import ProtectedRoute from './ProtectedRoute';
+
+
 
 function App() {
   return (
     <Router>
       <div>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
+          <a href="/">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a>
         </nav>
-
-        {/* Define the Routes */}
         <Routes>
-          <Route path="/" element={<home />} />
-          <Route path="/about" element={<about />} />
-          <Route path="/contact" element={<contact />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
