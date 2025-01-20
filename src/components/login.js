@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../AuthContext';
+import { AuthContext } from '../AuthContext'; // Importa il contesto
 
 const Login = () => {
+  const { login } = useContext(AuthContext); // Usa il contesto per fare il login
   const [username, setUsername] = useState('');
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    login(username);
-    navigate('/profile');
+    login(username); // Memorizza l'utente nel contesto
+    navigate('/profile'); // Reindirizza alla pagina del profilo
   };
 
   return (
@@ -27,3 +27,4 @@ const Login = () => {
 };
 
 export default Login;
+

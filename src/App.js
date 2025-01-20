@@ -1,5 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './AuthContext'; // Importa il provider
+import Login from './components/login';
+import Profile from './components/profile';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
@@ -26,3 +30,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
