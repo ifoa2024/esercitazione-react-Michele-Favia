@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../AuthContext';  // Importa il contesto
+import { AuthContext } from '../AuthContext';  // Importa il contesto di autenticazione
 
 const Users = () => {
   const { user } = useContext(AuthContext); // Ottieni l'utente dal contesto
@@ -16,7 +16,11 @@ const Users = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUsers(data);
+        
+        // Filtra gli utenti per rimuovere Clementina DuBuque (id: 8)
+        const filteredUsers = data.filter(user => user.id !== 8);
+
+        setUsers(filteredUsers);  // Imposta gli utenti filtrati nello stato
         setLoading(false);
       } catch (error) {
         setError(error);

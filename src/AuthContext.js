@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (username, password) => {
     // Logica per il login (verifica username e password)
-    if (username === 'bro' && password === '123') {
+    if (username === 'nome' && password === '123') {
       setUser(username);  // Se le credenziali sono corrette, imposta l'utente nel contesto
     } else {
       alert('Username o password errati');

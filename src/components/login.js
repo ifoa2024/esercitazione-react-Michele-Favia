@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';  // Importa React e i hooks
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate per reindirizzare
 import { AuthContext } from '../AuthContext'; // Importa il contesto di autenticazione
 
@@ -9,9 +9,9 @@ const Login = () => {
   const navigate = useNavigate(); // Hook per navigare tra le pagine
 
   const handleLogin = () => {
-    // Verifica se le credenziali sono corrette
     login(username, password); // Passa username e password al contesto
-    if (username === 'bro' && password === '123') {  // Controlla la validazione
+
+    if (username === 'nome' && password === '123') {  // Controlla se le credenziali sono corrette
       navigate('/users');  // Se il login è corretto, naviga alla pagina users
     } else {
       alert('Username o password errati'); // Mostra l'alert se le credenziali sono errate
