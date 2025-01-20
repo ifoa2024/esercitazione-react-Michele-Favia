@@ -7,7 +7,6 @@ const Users = () => {
 
   // Effettua la chiamata API al caricamento del componente
   useEffect(() => {
-    // Funzione per recuperare i dati
     const fetchUsers = async () => {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -28,26 +27,30 @@ const Users = () => {
 
   // Gestisce lo stato di caricamento e gli errori
   if (loading) {
-    return <p>Caricamento in corso...</p>;
+    return <div className="text-center">Caricamento in corso...</div>;
   }
 
   if (error) {
-    return <p>Errore: {error.message}</p>;
+    return <div className="text-center text-danger">Errore: {error.message}</div>;
   }
 
   return (
-    <div>
-      <h1>Lista degli Utenti</h1>
-      <ul>
+    <div className="container mt-4">
+      <h1 className="text-center mb-4">Lista degli Utenti</h1>
+      <div className="row">
         {users.map(user => (
-          <li key={user.id}>
-            <h3>{user.name}</h3>
-            <p>Email: {user.email}</p>
-            <p>Telefono: {user.phone}</p>
-            <p>Website: {user.website}</p>
-          </li>
+          <div className="col-md-4 mb-4" key={user.id}>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">{user.name}</h5>
+                <p className="card-text"><strong>Email:</strong> {user.email}</p>
+                <p className="card-text"><strong>Telefono:</strong> {user.phone}</p>
+                <p className="card-text"><strong>Website:</strong> <a href={`https://${user.website}`} target="_blank" rel="noopener noreferrer">{user.website}</a></p>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

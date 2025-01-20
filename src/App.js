@@ -4,6 +4,8 @@ import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
 import Users from './components/Users';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
