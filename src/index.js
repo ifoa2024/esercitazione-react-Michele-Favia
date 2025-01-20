@@ -1,17 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import ReactDOM from 'react-dom/client'; // Nota: usa 'react-dom/client'
 import App from './App';
-import { AuthProvider } from './AuthContext';
 
-ReactDOM.render(
-  <AuthProvider>
+// Selezionare l'elemento root
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// metodo render su root
+root.render(
+  <React.StrictMode>
     <App />
-  </AuthProvider>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
