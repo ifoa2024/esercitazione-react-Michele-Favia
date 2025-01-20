@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../AuthContext';  // Importa il contesto di autenticazione
 
 const Users = () => {
-  const { user } = useContext(AuthContext); // Ottieni l'utente dal contesto
+  const { user, logout } = useContext(AuthContext); // Ottieni l'utente dal contesto e la funzione logout
 
   const [users, setUsers] = useState([]); // Stato per memorizzare gli utenti
   const [loading, setLoading] = useState(true); // Stato per il caricamento
@@ -46,6 +46,10 @@ const Users = () => {
   return (
     <div className="container mt-4">
       <h1 className="text-center mb-4">Lista degli Utenti</h1>
+      
+      {/* Aggiungi il pulsante di logout */}
+      <button onClick={logout} className="btn btn-danger mb-3">Logout</button>
+      
       <div className="row">
         {users.map(user => (
           <div className="col-md-4 mb-4" key={user.id}>
